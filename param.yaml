@@ -1,0 +1,57 @@
+# param.yaml
+
+colonne_cible: 'RainTomorrow'
+
+colonnes_numeriques:
+  - MinTemp
+  - MaxTemp
+  - Rainfall
+  - Evaporation
+  - Sunshine
+  - WindGustSpeed
+  - WindSpeed9am
+  - WindSpeed3pm
+  - Humidity9am
+  - Humidity3pm
+  - Pressure9am
+  - Pressure3pm
+  - Cloud9am
+  - Cloud3pm
+  - Temp9am
+  - Temp3pm
+
+colonnes_categoriques:
+  - Location
+  - WindGustDir
+  - WindDir9am
+  - WindDir3pm
+  - RainToday
+
+colonnes_date:
+  - Date
+
+model_dir: "models/"
+model_output_dir: "model_output/"
+
+data_dir: "data/processed/"
+data_name: "df_weather_nettoye.csv"
+
+# Activer ou désactiver l'optimisation des hyperparamètres (GridSearch)
+do_grid_search: false
+
+grid_search:
+  logistic:
+    C: [0.01, 0.1, 1, 10, 100]
+    penalty: ['l1', 'l2']
+    solver: ['liblinear']
+  mlp:
+    hidden_layer_sizes: [50, 100, [50, 50], [100, 50], [100, 100]]
+    activation: ['relu', 'tanh']
+    learning_rate_init: [0.001, 0.01]
+    max_iter: [200, 500]
+  sgd:
+    loss: ['hinge', 'log_loss']
+    penalty: ['l2', 'l1', 'elasticnet']
+    max_iter: [100, 500]
+    alpha: [0.0001, 0.001, 0.01]
+    l1_ratio: [0.0, 0.5, 1.0]

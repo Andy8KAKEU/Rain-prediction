@@ -1,0 +1,25 @@
+=== RAPPORT D'EXPERIMENTATION : LOGISTIC ===
+Date : 2026-05-01 16:01:33
+
+--- Validation Croisée (TimeSeriesSplit) ---
+  roc_auc      -> val: 0.8555 +/- 0.0208 | train: 0.8579 +/- 0.0060
+  accuracy     -> val: 0.8310 +/- 0.0131 | train: 0.8428 +/- 0.0072
+  precision    -> val: 0.7131 +/- 0.0745 | train: 0.7165 +/- 0.0079
+  recall       -> val: 0.4942 +/- 0.0696 | train: 0.4842 +/- 0.0103
+  f1           -> val: 0.5757 +/- 0.0311 | train: 0.5779 +/- 0.0099
+
+--- Evaluation Finale (Test Set) ---
+  accuracy: 0.8655
+  roc_auc: 0.8885
+  confusion_matrix: [[21725, 971], [2855, 2888]]
+  pr_auc: 0.7134
+
+--- Rapport de Classification ---
+              precision    recall  f1-score   support
+
+           0       0.88      0.96      0.92     22696
+           1       0.75      0.50      0.60      5743
+
+    accuracy                           0.87     28439
+   macro avg       0.82      0.73      0.76     28439
+weighted avg       0.86      0.87      0.85     28439
