@@ -1,0 +1,23 @@
+=== RAPPORT D'EXPERIMENTATION : MLP ===
+Date : 2026-05-02 13:34:41
+
+--- Validation Croisée (TimeSeriesSplit) ---
+  roc_auc      -> val: 0.8636 +/- 0.0172 | train: 0.8829 +/- 0.0048
+  accuracy     -> val: 0.8374 +/- 0.0105 | train: 0.8573 +/- 0.0040
+  precision    -> val: 0.7161 +/- 0.0614 | train: 0.7653 +/- 0.0200
+  recall       -> val: 0.5222 +/- 0.0461 | train: 0.5163 +/- 0.0115
+  f1           -> val: 0.5999 +/- 0.0178 | train: 0.6164 +/- 0.0096
+
+--- Evaluation Finale (Test Set) ---
+  accuracy: 0.8677168676817048
+  roc_auc: 0.8928639183801081
+
+--- Rapport de Classification ---
+              precision    recall  f1-score   support
+
+           0       0.89      0.95      0.92     22696
+           1       0.74      0.53      0.62      5743
+
+    accuracy                           0.87     28439
+   macro avg       0.82      0.74      0.77     28439
+weighted avg       0.86      0.87      0.86     28439

@@ -26,15 +26,19 @@ def main():
     data_path = params['data_dir'] + params['data_name']
     print(f"Chargement des données : {data_path}")
     df = pd.read_csv(data_path)
+    y = df[params['colonne_cible']]
+    X = df.drop(columns=[params['colonne_cible']])
 
-    # 3. Préparation (preprocessing propre à chaque modèle)
-    print("Préparation des données...")
-    X, y = model.prepare(df)
-
-    # 4. Séparation train / test
+    # 3. Séparation train / test
     print("Séparation train/test...")
     X_train, X_test, y_train, y_test = split_dataset(X, y)
     print(f"  Train : {X_train.shape[0]} exemples | Test : {X_test.shape[0]} exemples")
+
+
+    # 4. Préparation (preprocessing propre à chaque modèle)
+    print("Préparation des données...")
+    X_train, y_train = model.prepare(X_train, y_train)
+
 
     # On récupère la config
     grid_search_config = params.get('grid_search', {})

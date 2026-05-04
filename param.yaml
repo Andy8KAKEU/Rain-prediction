@@ -19,6 +19,9 @@ colonnes_numeriques:
   - Cloud3pm
   - Temp9am
   - Temp3pm
+  - Temp_diff
+  - Pressure_diff
+  - Humidity_diff
 
 colonnes_categoriques:
   - Location
@@ -37,18 +40,22 @@ data_dir: "data/processed/"
 data_name: "df_weather_nettoye.csv"
 
 # Activer ou désactiver l'optimisation des hyperparamètres (GridSearch)
-do_grid_search: false
+do_grid_search: true
 
 grid_search:
   logistic:
     C: [0.01, 0.1, 1, 10, 100]
     penalty: ['l1', 'l2']
     solver: ['liblinear']
+    class_weight: ['balanced', None]
   mlp:
-    hidden_layer_sizes: [50, 100, [50, 50], [100, 50], [100, 100]]
+    hidden_layer_sizes: [50, 100, [50, 50], [100, 50]]
     activation: ['relu', 'tanh']
+    solver: ['adam']
     learning_rate_init: [0.001, 0.01]
+    early_stopping: [True, False]
     max_iter: [200, 500]
+    alpha: [0.0001, 0.001, 0.01]
   sgd:
     loss: ['hinge', 'log_loss']
     penalty: ['l2', 'l1', 'elasticnet']
